@@ -58,5 +58,5 @@ do
 #        newfile=${file%_core.*}
 #        mv $file ${newfile}.${mp4tag}
 #        echo $file verschoben.
-   done
+#   done
 done

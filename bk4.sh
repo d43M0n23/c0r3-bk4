@@ -40,7 +40,7 @@ mkvtag=mkv
 # echo ${VALUE%.*}
 for file in *;
 do
-  find "$file" -type f -not -name ".*" | grep .bk44$ | while read file
+  find "$file" -type f -not -name ".*" | grep .bk4$ | while read file
   do
     pfad=$(readlink -f "$file") # kpl. Pfad
         DirPath=$pfad

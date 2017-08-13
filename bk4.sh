@@ -52,7 +52,7 @@ do
 	#tar -zcvf `dirname $0`/tmp/weekly/${DAY_OF_WEEK}_database.tar.gz `dirname $0`/${DAY_OF_WEEK}.sql
 	#rm -rf `dirname $0`/${DAY_OF_WEEK}.sql
 
-echo 'Made $dirname weekly backup...'
+echo "Made ${dirname} weekly backup..."
   done
 #  find  bla bla 
 done

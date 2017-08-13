@@ -41,18 +41,16 @@ do
         DirPath=$pfad
         DirPath="$(dirname $DirPath)"
         DirPath="$(basename $DirPath)"
-        echo "$DirPath"
-	dirname=$DirPath
+	bk4dir=$DirPath
 #        newfile=${file%.*}
-#        echo $file gefunden. <- BK4 FILE
 
 	# Make The Weekly Backup
-	tar -zcvf ${dirname}_${DATE}.tar.gz $dirname
+	tar -zcvf ${bk4dir}_${DATE}.tar.gz $bk4dir
 	#mysqldump -h $DATABASE_HOST -u $DATABASE_USER -p$DATABASE_PASSWORD $DATABASE > `dirname $0`/${DAY_OF_WEEK}.sql
 	#tar -zcvf `dirname $0`/tmp/weekly/${DAY_OF_WEEK}_database.tar.gz `dirname $0`/${DAY_OF_WEEK}.sql
 	#rm -rf `dirname $0`/${DAY_OF_WEEK}.sql
 
-echo "Made ${dirname} weekly backup..."
+echo "Made ${bk4dir} weekly backup..."
   done
 #  find  bla bla 
 done

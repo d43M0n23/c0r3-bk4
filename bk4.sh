@@ -49,11 +49,14 @@ do
 	tar -zcvf ${bk4dir}_${DATE}.tar.gz $bk4dir
 
 	#Mysql *.bk4 auslesen
-	cat $file | grep mysql | cut -d ":" -f2
+	DATABASE=$(cat $file | grep mysql | cut -d ":" -f2)
 
-	#mysqldump -h $DATABASE_HOST -u $DATABASE_USER -p$DATABASE_PASSWORD $DATABASE > `dirname $0`/${DAY_OF_WEEK}.sql
-	#tar -zcvf `dirname $0`/tmp/weekly/${DAY_OF_WEEK}_database.tar.gz `dirname $0`/${DAY_OF_WEEK}.sql
-	#rm -rf `dirname $0`/${DAY_OF_WEEK}.sql
+	mysqldump -h $DATABASE_HOST -u $DATABASE_USER -p$DATABASE_PASSWORD $DATABASE > ${bk4dir}_${DATE}.sql
+	if [ ! -f ${bk4dir}_${DATE}.sql ]; then
+	echo "${bk4dir}_${DATE}.sql erstellt"
+	else
+	echo "Fehler bei SQL erstellung!"
+	fi
 
 echo "Made ${bk4dir} weekly backup..."
   done

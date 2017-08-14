@@ -81,14 +81,15 @@ do
 	if [ -f ${bk4dir}_${DATE}.sql ]; then
 	echo -e "\n${bk4dir}_${DATE}.sql erstellt"
 	tar -zcvf ${bk4dir}_${DATE}.sql.tar.gz ${bk4dir}_${DATE}.sql
-	#rm ${bk4dir}_${DATE}.sql
+
+	# Entfernen der sql datei
+	rm ${bk4dir}_${DATE}.sql
 	else
 	echo -e "\nFehler bei SQL erstellung!"
 	fi
 
  echo -e "${red}Made ${bk4dir} weekly backup...${clear}"
   done
-	rm ${bk4dir}_${DATE}.sql
 #find
 done
 exit

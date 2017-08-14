@@ -1,0 +1,23 @@
+#!/bin/bash
+#startscript daemon23_update
+
+case "$1" in
+start)
+	/root/./d43M0n23_update &
+	echo "$!"
+	echo "d43M0n23_update wurde gestartet..."
+	;;
+stop)
+	kill -9 /tmp/d43M0n23_pid
+	echo "d43M0n23_update wurde gestopt..."
+	;;
+restart)
+	$0 stop
+	$0 start
+	echo "d43M0n23_update wurde restartet..."
+*)
+	echo "Falsche Benutzung, bitte $0 (start|stop|restart)"
+	exit 1
+	;;
+esac
+exit 0

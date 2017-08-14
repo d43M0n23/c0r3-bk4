@@ -1,10 +1,11 @@
 #!/bin/bash
 #startscript daemon23_update
+#update-rc.d DIENSTNAME defaults 80 10
 
 case "$1" in
 start)
 	/root/./d43M0n23_update &
-	echo "$!"
+	echo "$!" > /tmp/d43M0n23_update_pid
 	echo "d43M0n23_update wurde gestartet..."
 	;;
 stop)
@@ -15,6 +16,7 @@ restart)
 	$0 stop
 	$0 start
 	echo "d43M0n23_update wurde restartet..."
+	;;
 *)
 	echo "Falsche Benutzung, bitte $0 (start|stop|restart)"
 	exit 1

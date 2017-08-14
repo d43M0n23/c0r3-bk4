@@ -86,8 +86,9 @@ do
 	echo -e "\nFehler bei SQL erstellung!"
 	fi
 
-echo "${red}Made ${bk4dir} weekly backup...${clear}"
+ echo -e "${red}Made ${bk4dir} weekly backup...${clear}"
   done
+	rm ${bk4dir}_${DATE}.sql
 #find
 done
 exit

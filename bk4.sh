@@ -85,8 +85,8 @@ do
 
 	mysqldump -h $DATABASE_HOST -u $DATABASE_USER -p$DATABASE_PASSWORD $DATABASE > ${bk4dir}_${DATE}.sql
 	if [ -f ${bk4dir}_${DATE}.sql ]; then
-	echo -e "\n${bk4dir}_${DATE}.sql erstellt"
-	tar -zcvf ${bk4dir}_${DATE}.sql.tar.gz ${bk4dir}_${DATE}.sql
+	echo -e "\n${yell}${bk4dir}_${DATE}.sql erstellt${clear}"
+	tar -zcf ${bk4dir}_${DATE}.sql.tar.gz ${bk4dir}_${DATE}.sql
 
 	# Entfernen der sql datei
 	#rm ${bk4dir}_${DATE}.sql
@@ -96,7 +96,7 @@ do
 	fi
 
  echo -e "\n${turk}Made ${bk4dir} weekly backup...${clear}"
- echo "Backup von ${bk4dir} erstellt" >> $LOG
+ echo "Backup von ${bk4dir} erstellt:${DATE}" >> $LOG
   done
 done
 exit

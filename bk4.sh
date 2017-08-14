@@ -51,14 +51,18 @@ DESTINATION=/full/path
 # Database Backup User
 #DATABASE=''
 DATABASE_USER='root'
-DATABASE_PASSWORD=$0
+DATABASE_PASSWORD=''
 DATABASE_HOST='localhost'
+
+# Logdate
+LOG="bk4.log"
 
 # Tools install
 #if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
-
+if [ ! -f $LOG ]; then touch $LOG; fi
 # for file in *.bk4
 # echo ${VALUE%.*}
+if
 for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .bk4$ | while read file
@@ -69,8 +73,8 @@ do
         DirPath="$(basename $DirPath)"
 	bk4dir=$DirPath
 	#newfile=${file%.*}
-	echo -e "\n${yell}Backup von $DirPath wird erstellt..${clear}"
-
+	echo -e "\n${yell}Backup von $DirPath wird erstellt..${clear}\n"
+	echo "Last Backup:${Date}" >> $file
 	# Make The Weekly Backup
 	tar -zcvf ${bk4dir}_${DATE}.tar.gz $bk4dir
 
@@ -89,7 +93,8 @@ do
 	echo -e "\nFehler bei SQL erstellung!"
 	fi
 
- echo -e "${red}Made ${bk4dir} weekly backup...${clear}"
+ echo -e "\n${turk}Made ${bk4dir} weekly backup...${clear}"
+ echo "Backup von ${bk4dir} erstellt" >> $LOG
   done
 done
 exit

@@ -46,7 +46,7 @@ bgwhite='\033[47m'		#Hintergrund weiß
 DATE=$(date +%F)
 
 # Local Destination
-DESTINATION=/full/path
+DESTINATION=/home/bk4/
 
 # Database Backup User
 #DATABASE=''
@@ -60,8 +60,9 @@ LOG="bk4.log"
 # Tools install
 #if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
 
-# Logcheck
+# Log & bka-dir check
 if [ ! -f $LOG ]; then touch $LOG; fi
+if [ ! -d $DESTINATION ]; mkdir $DESTINATION; fi
 
 # for file in *.bk4
 # echo ${VALUE%.*}
@@ -91,6 +92,9 @@ do
 	# Entfernen der sql datei
 	#rm ${bk4dir}_${DATE}.sql
 	rm *.sql
+	# in bk4 dir verschieben
+        echo -e "\n${mag}Daten werden in das Backup-Directory verschoben ..${clear}"
+        mv $bk4dir%.tar.gz $DESTINATION
 	else
 	echo -e "\nFehler bei SQL erstellung!"
 	fi

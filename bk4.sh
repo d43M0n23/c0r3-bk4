@@ -54,15 +54,17 @@ DATABASE_USER='root'
 DATABASE_PASSWORD=''
 DATABASE_HOST='localhost'
 
-# Logdate
+# Logfile
 LOG="bk4.log"
 
 # Tools install
 #if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
+
+# Logcheck
 if [ ! -f $LOG ]; then touch $LOG; fi
+
 # for file in *.bk4
 # echo ${VALUE%.*}
-if
 for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .bk4$ | while read file

@@ -49,7 +49,6 @@ DATE=$(date +%F)
 DESTINATION=/home/bk4/
 
 # Database Backup User
-#DATABASE=''
 DATABASE_USER='root'
 DATABASE_PASSWORD=''
 DATABASE_HOST='localhost'
@@ -62,7 +61,7 @@ LOG="bk4.log"
 
 # Log & bka-dir check
 if [ ! -f $LOG ]; then touch $LOG; fi
-if [ ! -d $DESTINATION ]; mkdir $DESTINATION; fi
+if [ ! -d $DESTINATION ]; then mkdir $DESTINATION; fi
 
 # for file in *.bk4
 # echo ${VALUE%.*}

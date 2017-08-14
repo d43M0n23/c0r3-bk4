@@ -44,8 +44,13 @@ do
 	bk4dir=$DirPath
 #        newfile=${file%.*}
 	echo $DirPath
+
 	# Make The Weekly Backup
 	tar -zcvf ${bk4dir}_${DATE}.tar.gz $bk4dir
+
+	#Mysql *.bk4 auslesen
+	cat $file | grep mysql | cut -d ":" -f2
+
 	#mysqldump -h $DATABASE_HOST -u $DATABASE_USER -p$DATABASE_PASSWORD $DATABASE > `dirname $0`/${DAY_OF_WEEK}.sql
 	#tar -zcvf `dirname $0`/tmp/weekly/${DAY_OF_WEEK}_database.tar.gz `dirname $0`/${DAY_OF_WEEK}.sql
 	#rm -rf `dirname $0`/${DAY_OF_WEEK}.sql

@@ -29,9 +29,8 @@ DATABASE_HOST='localhost'
 
 # Tools install
 #if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
-#if ! hash ffmpeg 2>/dev/null; then sudo apt-get install --yes ffmpeg ; fi
 
-#for file in *.mp4 *.mkv (Testen)
+# for file in *.bk4
 # echo ${VALUE%.*}
 for file in *;
 do
@@ -42,13 +41,13 @@ do
         DirPath="$(dirname $DirPath)"
         DirPath="$(basename $DirPath)"
 	bk4dir=$DirPath
-#        newfile=${file%.*}
+	#newfile=${file%.*}
 	echo $DirPath
 
 	# Make The Weekly Backup
 	tar -zcvf ${bk4dir}_${DATE}.tar.gz $bk4dir
 
-	#Mysql *.bk4 auslesen
+	#Mysql *.bk4 auslesen und dump erstellen
 	DATABASE=$(cat $file | grep mysql | cut -d ":" -f2)
 
 	mysqldump -h $DATABASE_HOST -u $DATABASE_USER -p$DATABASE_PASSWORD $DATABASE > ${bk4dir}_${DATE}.sql
@@ -60,6 +59,6 @@ do
 
 echo "Made ${bk4dir} weekly backup..."
   done
-#  find  bla bla 
+#find
 done
 exit

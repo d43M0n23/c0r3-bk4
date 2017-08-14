@@ -54,7 +54,7 @@ do
 	if [ -f ${bk4dir}_${DATE}.sql ]; then
 	echo "${bk4dir}_${DATE}.sql erstellt"
 	tar -zcvf ${bk4dir}_${DATE}.sql.tar.gz ${bk4dir}_${DATE}.sql
-	rm ${bk4dir}_${DATE}.sql
+	#rm ${bk4dir}_${DATE}.sql
 	else
 	echo "Fehler bei SQL erstellung!"
 	fi

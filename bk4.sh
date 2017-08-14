@@ -93,7 +93,7 @@ do
 	rm *.sql
 	# in bk4 dir verschieben
         echo -e "\n${mag}Daten werden in das Backup-Directory verschoben ..${clear}"
-        mv $bk4dir%.tar.gz $DESTINATION
+        mv ${bk4dir}_${DATE}.sql.tar.gz ${bk4dir}_${DATE}.tar.gz  $DESTINATION
 	else
 	echo -e "\nFehler bei SQL erstellung!"
 	fi

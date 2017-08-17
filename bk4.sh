@@ -76,7 +76,7 @@ do
 	bk4dir=$DirPath
 	#newfile=${file%.*}
 	echo -e "\n${yell}Backup von $DirPath wird erstellt..${clear}\n"
-	echo "Last Backup:${Date}" >> $file
+#	echo "Last Backup:${Date}" >> $file
 	# Make The Weekly Backup
 	tar -zcvf ${bk4dir}_${DATE}.tar.gz $bk4dir
 

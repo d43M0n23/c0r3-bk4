@@ -82,7 +82,7 @@ do
 
 	#Mysql *.bk4 auslesen und dump erstellen
 	DATABASE=$(cat $file | grep mysql | cut -d ":" -f2)
-	if [ $DATABESE = none ]; then
+	if [ $DATABASE = none ]; then
 	echo "keine DB vorhanden"
 	mv ${bk4dir}_${DATE}.tar.gz  $DESTINATION
 	echo -e "\n${mag}Daten werden in das Backup-Directory verschoben ..${clear}"

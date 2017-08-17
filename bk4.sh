@@ -87,7 +87,7 @@ do
 	mv ${bk4dir}_${DATE}.tar.gz  $DESTINATION
 	echo -e "\n${mag}Daten werden in das Backup-Directory verschoben ..${clear}"
 	else
-	mysqldump -h $DATABASE_HOST -u $DATABASE_USER -p$DATABASE_PASSWORD $DATABASE > ${bk4dir}_${DATE}.sql
+	mysqldump -h $DATABASE_HOST -u $DATABASE_USER -p$DATABASE_PASSWORD --databases $DATABASE > ${bk4dir}_${DATE}.sql
 	if [ -f ${bk4dir}_${DATE}.sql ]; then
 	echo -e "\n${yell}${bk4dir}_${DATE}.sql erstellt${clear}"
 	tar -zcf ${bk4dir}_${DATE}.sql.tar.gz ${bk4dir}_${DATE}.sql

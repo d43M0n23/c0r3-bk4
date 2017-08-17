@@ -82,7 +82,11 @@ do
 
 	#Mysql *.bk4 auslesen und dump erstellen
 	DATABASE=$(cat $file | grep mysql | cut -d ":" -f2)
-
+	if [ $DATABESE = none ]; then
+	echo "keine DB vorhanden"
+	mv ${bk4dir}_${DATE}.tar.gz  $DESTINATION
+	echo -e "\n${mag}Daten werden in das Backup-Directory verschoben ..${clear}"
+	else
 	mysqldump -h $DATABASE_HOST -u $DATABASE_USER -p$DATABASE_PASSWORD $DATABASE > ${bk4dir}_${DATE}.sql
 	if [ -f ${bk4dir}_${DATE}.sql ]; then
 	echo -e "\n${yell}${bk4dir}_${DATE}.sql erstellt${clear}"
@@ -97,7 +101,7 @@ do
 	else
 	echo -e "\nFehler bei SQL erstellung!"
 	fi
-
+	fi
  echo -e "\n${turk}Made ${bk4dir} weekly backup...${clear}"
  echo "Backup von ${bk4dir} erstellt:${DATE}" >> $LOG
   done

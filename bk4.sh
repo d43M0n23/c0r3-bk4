@@ -94,7 +94,7 @@ do
 
 	# Entfernen der sql datei
 	#rm ${bk4dir}_${DATE}.sql
-	rm *.sql
+	#rm *.sql
 	# in bk4 dir verschieben
         echo -e "\n${mag}Daten werden in das Backup-Directory verschoben ..${clear}"
         mv ${bk4dir}_${DATE}.sql.tar.gz ${bk4dir}_${DATE}.tar.gz  $DESTINATION
